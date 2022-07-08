@@ -1,0 +1,16 @@
+#spring:
+#  datasource:
+#    username: root
+#    password: password
+#    url: jdbc:mysql://localhost:3306/"nameOfDB"?createDatabaseIfNotExist=true
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#  data:
+#    jpa:
+#      repositories:
+#        enabled: true
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+#    show-sql: true
+#    database: mysql
