@@ -16,7 +16,11 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
-    private ProductRepository repository;
+    private final ProductRepository repository;
+
+    public ProductServiceImpl(ProductRepository repository) {
+        this.repository = repository;
+    }
 
 
     @Override
@@ -55,13 +59,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product updateProduct(ProductDTO productDTO) {
         var existingProduct = repository.findById(productDTO.getId()).orElse(null);
+        assert existingProduct != null;
         existingProduct.setName(productDTO.getName());
         existingProduct.setPrice(productDTO.getPrice());
         existingProduct.setQuantity(productDTO.getQuantity());
-
         var product = AppUtils.dtoToEntity(productDTO);
-
-
         return repository.save(product);
     }
 
